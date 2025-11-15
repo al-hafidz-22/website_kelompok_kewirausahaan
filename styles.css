@@ -1,0 +1,603 @@
+/* ===================== GLOBAL COLORS ===================== */
+:root {
+  --cyber-bg: #0a0f1f;
+  --cyber-bg-light: #11182b;
+  --glow-blue: #4cc9ff;
+  --glow-purple: #b388ff;
+  --text-main: #e2e8f0;
+  --text-dim: #94a3b8;
+}
+
+/* ===================== BASE ===================== */
+body.theme-cyber {
+  margin: 0;
+  background: var(--cyber-bg);
+  font-family: "Poppins", sans-serif;
+  color: var(--text-main);
+  scroll-behavior: smooth;
+}
+
+/* ===================== NAV ===================== */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 25px 30px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(10, 15, 31, 0.8);
+  backdrop-filter: blur(14px);
+
+  z-index: 9999;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+
+  border-bottom: 1px solid rgba(76, 201, 255, 0.4);
+  box-shadow: 0 10px 35px rgba(0, 180, 255, 0.25);
+
+  overflow: hidden;
+}
+
+/* efek neon berjalan */
+nav::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: -200px;
+  width: 200px;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--glow-blue),
+    var(--glow-purple),
+    transparent
+  );
+  animation: navbarAurora 3.5s linear infinite;
+}
+
+@keyframes navbarAurora {
+  0% {
+    left: -200px;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+.nav-right {
+  display: flex;
+  gap: 15px;
+}
+
+nav button {
+  background: rgba(76, 201, 255, 0.05);
+  color: var(--glow-blue);
+  border: 1px solid rgba(76, 201, 255, 0.45);
+  padding: 10px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 15px;
+  backdrop-filter: blur(4px);
+}
+
+nav button:hover {
+  background: rgba(76, 201, 255, 0.12);
+  box-shadow: 0 0 12px var(--glow-blue);
+}
+
+/* === NEON BORDER BERGERAK UNTUK TOMBOL NAV === */
+nav button {
+  position: relative;
+  overflow: hidden; /* supaya neon tidak keluar */
+}
+
+/* neon border */
+nav button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 12px; /* mengikuti border button kamu */
+  border: 2px solid transparent;
+
+  background: linear-gradient(90deg, #4cc9ff, #b388ff, #ec4899, #4cc9ff)
+    border-box;
+
+  /* supaya hanya garis border-nya yang tampak */
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  pointer-events: none;
+
+  /* animasi jalan */
+  background-size: 300% 300%;
+  animation: buttonNeonMove 3s linear infinite;
+  opacity: 1; /* selalu tampil */
+}
+
+@keyframes buttonNeonMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 300% 50%;
+  }
+}
+
+/* ===================== SECTIONS ===================== */
+section {
+  min-height: 100vh;
+  padding: 100px 20px 100px;
+  position: relative;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* ===================== HOME TITLE ===================== */
+.home-title {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.home-title h1 {
+  font-size: 36px;
+  margin-bottom: 8px;
+  color: var(--glow-blue);
+  text-shadow: 0 0 10px rgba(76, 201, 255, 0.6);
+}
+
+.home-title p {
+  font-size: 16px;
+  color: var(--text-dim);
+}
+
+/* ===================== HOME ===================== */
+.neon-frame {
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: inset 0 0 25px rgba(76, 201, 255, 0.4);
+}
+
+.home-layout {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-top: 50px;
+}
+
+.home-photo {
+  width: 380px;
+  max-width: 380px;
+  min-width: 300px;
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(76, 201, 255, 0.15);
+}
+
+.home-right {
+  flex: 1;
+}
+
+.home-quote {
+  text-align: center;
+  width: 100%;
+  margin-top: 50px;
+  font-style: italic;
+  color: var(--glow-blue);
+  text-shadow: 0 0 10px rgba(76, 201, 255, 0.6);
+}
+
+.home-right h2,
+.home-right h3 {
+  color: var(--glow-blue);
+  text-shadow: 0 0 10px rgba(76, 201, 255, 0.6);
+}
+
+/* ===================== ABOUT ===================== */
+.section-cyber-light {
+  background: var(--cyber-bg-light);
+  box-shadow: inset 0 0 40px rgba(76, 201, 255, 0.15);
+  padding-top: 20px;
+}
+
+.flip-card {
+  width: 200px;
+  height: 240px;
+  perspective: 1000px;
+  cursor: pointer;
+  position: relative; /* FIX AGAR CARD TIDAK LONCAT */
+}
+
+.neon-card {
+  border-radius: 20px;
+  transition: 0.4s ease;
+}
+
+.flip-card-inner {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: 0.7s;
+}
+
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  top: 0; /* FIX WAJIB */
+  left: 0; /* FIX WAJIB */
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.05);
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* SISI BELAKANG */
+.flip-card-back {
+  transform: rotateY(180deg);
+  background: rgba(10, 20, 40, 0.7);
+  color: #e2e8f0;
+  border: 1px solid rgba(76, 201, 255, 0.25);
+  box-shadow: 0 0 12px rgba(76, 201, 255, 0.25);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  /* Jarak lebih rapat */
+  gap: 2px;
+}
+
+.flip-card-back h3 {
+  margin: 0; /* rapat */
+}
+
+.flip-card-back p {
+  margin: 0; /* rapat */
+  opacity: 0.9;
+  font-size: 14px;
+}
+
+/* FOTO DEPAN */
+.flip-card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* supaya gambar memenuhi tanpa distorsi */
+  border-radius: 20px; /* mengikuti bentuk kartu */
+}
+
+/* NEON BORDER - versi paling stabil */
+.flip-card-front {
+  position: relative;
+  overflow: hidden;
+}
+
+.flip-card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  position: relative;
+  z-index: 2; /* gambar di atas tapi ada gap untuk neon */
+}
+
+/* NEON BORDER */
+.flip-card-front::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+
+  border: 3px solid transparent;
+  background: linear-gradient(90deg, #00eaff, #ff00e0, #b388ff, #00eaff)
+    border-box;
+
+  /* Mask agar hanya border yang terlihat */
+  --mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: var(--mask);
+  -webkit-mask: var(--mask);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+
+  background-size: 300% 300%;
+  animation: cyberNeonSpin 3s linear infinite;
+
+  z-index: 3;
+  pointer-events: none;
+}
+@keyframes cyberNeonSpin {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 300% 50%;
+  }
+}
+
+/* Judul struktur */
+.neon-subtitle {
+  text-align: center;
+  width: 100%;
+  display: block;
+}
+
+/* ===================== ABOUT — Struktur Organisasi ===================== */
+.top-row {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin-bottom: 40px;
+}
+
+.bottom-row {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+@media (max-width: 768px) {
+  .top-row,
+  .bottom-row {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* ===================== galery ===================== */
+.section-cyber-aurora {
+  background: linear-gradient(
+    135deg,
+    rgba(76, 201, 255, 0.2),
+    rgba(179, 136, 255, 0.25),
+    rgba(236, 72, 153, 0.2)
+  );
+  backdrop-filter: blur(20px);
+  border-radius: 0;
+  padding-top: 40px; /* FIX UTAMA */
+}
+
+/* ===================== GALLERY GRID ===================== */
+.gallery-grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* gambar memenuhi card */
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.4s ease;
+}
+
+/* efek hover neon */
+.gallery-item:hover img {
+  transform: scale(1.08);
+  filter: brightness(1.2);
+}
+
+/* border neon muncul saat hover */
+.gallery-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+
+  /* garis neon */
+  border: 3px solid transparent;
+  background: linear-gradient(90deg, #00eaff, #ff00e0, #b388ff, #00eaff)
+    border-box;
+
+  /* supaya hanya border yang terlihat */
+  /* supaya hanya border yang terlihat */
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  /* animasi bergerak */
+  background-size: 200% 100%;
+  animation: galleryBorderMove 2.5s linear infinite;
+
+  opacity: 1; /* selalu terlihat */
+  pointer-events: none;
+}
+
+.gallery-item:hover::after {
+  opacity: 1;
+}
+
+@keyframes galleryBorderMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+/* footer */
+
+.footer-cyber {
+  background: #0e1430;
+  padding: 2px 20px;
+  text-align: center;
+  margin-top: 0;
+
+  border-top: 1px solid rgba(76, 201, 255, 0.3);
+  box-shadow: 0 -10px 25px rgba(76, 201, 255, 0.15);
+
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  overflow: hidden;
+  position: relative; /* ← wajib */
+}
+
+/* NEON BERJALAN DI ATAS FOOTER */
+.footer-cyber::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -200px;
+  width: 200px;
+  height: 4px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--glow-blue),
+    var(--glow-purple),
+    transparent
+  );
+
+  animation: neonMove 3s linear infinite;
+  opacity: 0.8;
+}
+
+.neon-icon {
+  font-size: 26px;
+  margin: 0 12px;
+  color: var(--glow-blue);
+  transition: 0.3s;
+}
+
+.neon-icon:hover {
+  transform: translateY(-4px);
+  text-shadow: 0 0 20px var(--glow-blue);
+}
+
+/* ===================== REVEAL ===================== */
+.reveal-left,
+.reveal-right,
+.reveal-up {
+  opacity: 0;
+  filter: blur(6px);
+  transition: 0.9s ease;
+}
+
+.reveal-left {
+  transform: translateX(-40px);
+}
+.reveal-right {
+  transform: translateX(40px);
+}
+.reveal-up {
+  transform: translateY(40px);
+}
+
+.show {
+  opacity: 1;
+  transform: translate(0);
+  filter: blur(0);
+}
+
+/* ===================== SECTION NEON BORDER ===================== */
+section:not(:first-child)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -200px;
+  width: 200px;
+  height: 4px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--glow-blue),
+    var(--glow-purple),
+    transparent
+  );
+
+  animation: neonMove 3s linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes neonMove {
+  0% {
+    left: -200px;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* ===================== GLOBAL H2 NEON ===================== */
+h2,
+h3 {
+  color: var(--glow-blue) !important;
+  text-shadow: 0 0 12px rgba(5, 75, 104, 0.7), 0 0 20px rgba(76, 201, 255, 0.35);
+}
+
+/* ===================== BASE ===================== */
+body.theme-cyber {
+  margin: 0;
+  background: var(--cyber-bg);
+  font-family: "Poppins", sans-serif;
+  color: var(--text-main);
+  scroll-behavior: smooth;
+
+  /* ➜ Tambahkan baris ini */
+  overflow-x: hidden;
+}
+
+/* ➜ Tambahkan blok ini */
+html {
+  overflow-x: hidden;
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .nav-right {
+    justify-content: center;
+  }
+
+  .home-layout {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .home-title h1 {
+    font-size: 28px;
+  }
+
+  .header-cyber {
+    margin-top: 90px;
+  }
+}

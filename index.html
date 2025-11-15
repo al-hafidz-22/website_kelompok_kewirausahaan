@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio Kelompok Kewirausahaan</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body class="theme-cyber">
+    <!-- NAVBAR -->
+    <nav>
+      <div class="nav-right">
+        <button onclick="scrollToSection('home')">Home</button>
+        <button onclick="scrollToSection('about')">About</button>
+        <button onclick="scrollToSection('gallery')">Gallery</button>
+      </div>
+    </nav>
+
+    <!-- HOME SECTION -->
+    <!-- HOME SECTION -->
+    <section id="home" class="section-cyber">
+      <!-- JUDUL SEKARANG TANPA CARD & TANPA BACKGROUND -->
+      <div class="home-title">
+        <h1 class="reveal-left">Portfolio Kelompok Kewirausahaan</h1>
+        <p class="reveal-left">
+        Kelompok studi kewirausahaan yang fokus pada pengembangan konsep bisnis melalui kerja sama dan riset terarah.
+        </p>
+      </div>
+
+      <div class="container home-layout">
+        <div class="home-left reveal-right">
+          <div class="neon-frame">
+            <img src="images/pp.png" class="home-photo" />
+          </div>
+        </div>
+
+        <div class="home-right">
+          <h2 class="reveal-left">Selamat Datang!</h2>
+          <p class="reveal-left">
+         Kami adalah kelompok mahasiswa Universitas Ibnu Sina yang menggabungkan teknologi, kreativitas, dan semangat kewirausahaan untuk menghadirkan inovasi yang relevan bagi masa depan.
+          </p>
+
+          <h3 class="reveal-left">Visi Kami</h3>
+          <p class="reveal-left">
+            Mendorong generasi muda menjadi wirausaha sukses yang kreatif.
+          </p>
+
+          <h3 class="reveal-left">Misi Kami</h3>
+          <ul>
+            <li class="reveal-left">Mengembangkan platform e-commerce.</li>
+            <li class="reveal-left">
+              Mendorong inovasi teknologi dalam bisnis kecil.
+            </li>
+            <li class="reveal-left">
+              Berkolaborasi dengan komunitas wirausaha.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <blockquote class="home-quote">
+      “Inovasi adalah bahasa masa depan, dan wirausaha adalah penerjemahnya.”
+      </blockquote>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="section-cyber-light">
+      <div class="container">
+        <h2 class="neon-title reveal-left">Tentang Kami</h2>
+        <p class="reveal-left">
+          Kelompok ini dibentuk sebagai bagian dari pembelajaran kewirausahaan, dengan fokus pada pengembangan ide, kerja sama tim, dan penerapan konsep bisnis secara praktis.
+        </p>
+
+        <h2 class="neon-subtitle">Anggota Kelompok</h2>
+
+        <div class="org-chart">
+          <!-- BARIS 1: Ketua + Wakil -->
+          <div class="top-row">
+            <div
+              class="flip-card neon-card reveal-right"
+              onclick="flipCard(this)"
+            >
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <img src="images/card1.png" />
+                </div>
+                <div class="flip-card-back">
+                  <h3>Ketua</h3>
+                  <p>Siti Rawiyah</p>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="flip-card neon-card reveal-left"
+              onclick="flipCard(this)"
+            >
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <img src="images/card2.jpg" />
+                </div>
+                <div class="flip-card-back">
+                  <h3>Wakil</h3>
+                  <p>Yusuf @l_hafidz</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- BARIS 2: 3 ANGGOTA -->
+          <div class="bottom-row">
+            <div
+              class="flip-card neon-card reveal-right"
+              onclick="flipCard(this)"
+            >
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <img src="images/card3.png" />
+                </div>
+                <div class="flip-card-back">
+                  <h3>Anggota 1</h3>
+                  <p>Maria Rosmelinda Rona Pani</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="flip-card neon-card reveal-up" onclick="flipCard(this)">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <img src="images/card4.png" />
+                </div>
+                <div class="flip-card-back">
+                  <h3>Anggota 2</h3>
+                  <p>Nadila Ulul Azmi</p>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="flip-card neon-card reveal-left"
+              onclick="flipCard(this)"
+            >
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <img src="images/card5.png" />
+                </div>
+                <div class="flip-card-back">
+                  <h3>Anggota 3</h3>
+                  <p>Nabila Syabani</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- PROJECT SECTION -->
+    <!-- GALLERY SECTION -->
+    <section id="gallery" class="section-cyber-aurora">
+      <div class="container">
+       <h2 class="neon-title reveal-left">Galeri</h2>
+       <p>Cuplikan perjalanan kami membangun proyek dan mengembangkan ide–ide kreatif di dunia kewirausahaan.</p>
+
+<div class="gallery-grid reveal-up">
+  <div class="gallery-item"><img src="images/g1.png"></div>
+  <div class="gallery-item"><img src="images/g2.png"></div>
+  <div class="gallery-item"><img src="images/g3.png"></div>
+  <div class="gallery-item"><img src="images/g4.png"></div>
+  <div class="gallery-item"><img src="images/g5.png"></div>
+  <div class="gallery-item"><img src="images/g6.png"></div>
+</div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer-cyber">
+       <p class="footer-text">© 2025 Kelompok Kewirausahaan — All Rights Reserved.</p>
+  <p class="footer-sub">Developed with passion & teamwork.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
