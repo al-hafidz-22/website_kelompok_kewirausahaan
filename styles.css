@@ -190,13 +190,13 @@ section {
 
 .home-quote {
   text-align: center;
-  width: 100%;
-  margin-top: 50px;
-  font-style: italic;
-  color: var(--glow-blue);
-  text-shadow: 0 0 10px rgba(76, 201, 255, 0.6);
+  margin: 40px auto 0;
+  max-width: 90%;
+  padding: 0 12px;
+  display: block;
+  color: var(--glow-blue); /* TETAP biru neon */
+  text-shadow: 0 0 10px rgba(76, 201, 255, 0.6); /* glow TETAP */
 }
-
 .home-right h2,
 .home-right h3 {
   color: var(--glow-blue);
@@ -573,31 +573,123 @@ body.theme-cyber {
 /* ➜ Tambahkan blok ini */
 html {
   overflow-x: hidden;
+  scroll-padding-top: 120px; /* sesuaikan dengan tinggi navbar */
 }
 
-/* ===================== RESPONSIVE ===================== */
+/* ===================== RESPONSIVE FIX — UNIVERSAL ===================== */
+@media (max-width: 1024px) {
+  section {
+    padding: 80px 20px;
+  }
+
+  .container {
+    padding: 0 10px;
+  }
+}
+
+/* ===================== NAVBAR ===================== */
 @media (max-width: 768px) {
   nav {
-    flex-direction: column;
-    text-align: center;
-    gap: 10px;
-    padding: 12px;
+    padding: 15px 18px;
+  }
+
+  nav button {
+    padding: 8px 14px;
+    font-size: 14px;
   }
 
   .nav-right {
-    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
   }
+}
 
+/* ===================== HOME ===================== */
+@media (max-width: 900px) {
   .home-layout {
     flex-direction: column;
     text-align: center;
+    gap: 25px;
+  }
+
+  .home-photo {
+    width: 85%;
+    max-width: 330px;
+    min-width: 220px;
   }
 
   .home-title h1 {
-    font-size: 28px;
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 500px) {
+  .home-title h1 {
+    font-size: 24px;
   }
 
-  .header-cyber {
-    margin-top: 90px;
+  .home-right p,
+  .home-right li {
+    font-size: 14px;
+  }
+}
+
+/* ===================== ABOUT — FLIP CARD ===================== */
+@media (max-width: 992px) {
+  .top-row,
+  .bottom-row {
+    gap: 20px;
+  }
+
+  .flip-card {
+    width: 180px;
+    height: 220px;
+  }
+}
+
+@media (max-width: 768px) {
+  .top-row,
+  .bottom-row {
+    flex-direction: column;
+  }
+
+  .flip-card {
+    width: 200px;
+    height: 240px;
+  }
+}
+
+@media (max-width: 480px) {
+  .flip-card {
+    width: 160px;
+    height: 200px;
+  }
+}
+
+/* ===================== GALLERY ===================== */
+@media (max-width: 900px) {
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 18px;
+  }
+}
+
+@media (max-width: 600px) {
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+}
+
+@media (max-width: 420px) {
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  }
+}
+
+/* ===================== FOOTER ===================== */
+@media (max-width: 600px) {
+  .footer-cyber {
+    padding: 15px 10px;
+    font-size: 14px;
   }
 }
